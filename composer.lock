@@ -1,0 +1,151 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "bf3542b4d6bc6cc1e7f8756120c9d85e",
+    "packages": [
+        {
+            "name": "clue/socket-raw",
+            "version": "v1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/clue/php-socket-raw.git",
+                "reference": "089ffa05fa75bdc4e919aac44bbc435b3ef640ef"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/clue/php-socket-raw/zipball/089ffa05fa75bdc4e919aac44bbc435b3ef640ef",
+                "reference": "089ffa05fa75bdc4e919aac44bbc435b3ef640ef",
+                "shasum": ""
+            },
+            "require": {
+                "ext-sockets": "*",
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.3 || ^5.7 || ^4.8.35"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Socket\\Raw\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Lück",
+                    "email": "christian@clue.engineering"
+                }
+            ],
+            "description": "Simple and lightweight OOP wrapper for PHP's low-level sockets extension (ext-sockets).",
+            "homepage": "https://github.com/clue/php-socket-raw",
+            "keywords": [
+                "Socket",
+                "client",
+                "datagram",
+                "dgram",
+                "icmp",
+                "ipv6",
+                "server",
+                "stream",
+                "tcp",
+                "udg",
+                "udp",
+                "unix"
+            ],
+            "support": {
+                "issues": "https://github.com/clue/php-socket-raw/issues",
+                "source": "https://github.com/clue/php-socket-raw/tree/v1.5.0"
+            },
+            "funding": [
+                {
+                    "url": "https://clue.engineering/support",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/clue",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-11-27T13:16:18+00:00"
+        },
+        {
+            "name": "solcloud/curl",
+            "version": "v1.1.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/solcloud/curl.git",
+                "reference": "8aaebb749f782b3d5717fc58324857cc51f28c13"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/solcloud/curl/zipball/8aaebb749f782b3d5717fc58324857cc51f28c13",
+                "reference": "8aaebb749f782b3d5717fc58324857cc51f28c13",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">= 7.1",
+                "solcloud/http": "^1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Solcloud\\Curl\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "support": {
+                "issues": "https://github.com/solcloud/curl/issues",
+                "source": "https://github.com/solcloud/curl/tree/v1.1.5"
+            },
+            "time": "2021-09-27T10:26:45+00:00"
+        },
+        {
+            "name": "solcloud/http",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/solcloud/http.git",
+                "reference": "a03bf0677230ca1cd113e407f9df27d3321ad321"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/solcloud/http/zipball/a03bf0677230ca1cd113e407f9df27d3321ad321",
+                "reference": "a03bf0677230ca1cd113e407f9df27d3321ad321",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">= 7.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Solcloud\\Http\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "support": {
+                "issues": "https://github.com/solcloud/http/issues",
+                "source": "https://github.com/solcloud/http/tree/v1.0.2"
+            },
+            "time": "2021-09-27T10:08:48+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {
+        "php": "7.4.*"
+    },
+    "platform-dev": [],
+    "plugin-api-version": "2.0.0"
+}

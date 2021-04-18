@@ -1,0 +1,14 @@
+{
+    "name": "dan/dns",
+    "require": {
+        "php": "7.4.*",
+        "solcloud/curl": "^1.1",
+        "clue/socket-raw": "1.5.0"
+    },
+    "autoload": {
+        "classmap": [
+            "src/",
+            "lib/"
+        ]
+    }
+}
