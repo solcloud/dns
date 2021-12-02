@@ -103,6 +103,9 @@ abstract class Doh implements IResolve
         if (!preg_match('~^[-.a-z0-9]+$~', $domain)) {
             return $this->dd("Use ascii");
         }
+        if (strpos($domain, 'xn--') !== false) {
+            return $this->dd("No to IDNA punycode");
+        }
 
         $cacheHit = $this->cacheGet($domain, $type);
         if ($cacheHit) {
