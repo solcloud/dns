@@ -100,7 +100,7 @@ abstract class Doh implements IResolve
                 return $this->dd("Blacklist hit", 2);
             }
         }
-        if (!preg_match('~^[-.a-z0-9A-Z]+$~', $domain)) {
+        if (!preg_match('~^[-.a-z0-9]+$~', $domain)) {
             return $this->dd("Use ascii");
         }
 
