@@ -1,5 +1,5 @@
 {
-    "name": "dan/dns",
+    "name": "solcloud/dns",
     "require": {
         "php": "7.4.*",
         "solcloud/curl": "^1.1",

@@ -9,11 +9,11 @@ function dd(string $msg, int $errorCode = 1): void
 }
 
 if ($argc < 2) {
-    dd("Usage: $argv[0] domain.name [ google | cloudflare ]");
+    dd("Usage: $argv[0] domain.name [ google* | cloudflare ]");
 }
 
-$domain = (string)$argv[1] . '.';
-if (($argv[2] ?? 'default' === 'cloudflare')) {
+$domain = $argv[1] . '.';
+if (($argv[2] ?? 'default') === 'cloudflare') {
     $doh = new CloudFlareDoh();
 } else {
     $doh = new GoogleDoh();
