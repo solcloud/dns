@@ -18,4 +18,5 @@ if (($argv[2] ?? 'default') === 'cloudflare') {
 } else {
     $doh = new GoogleDoh();
 }
+$doh->loadBlockList(__DIR__ . '/../blockListDefault.txt');
 var_dump($doh->resolve($domain, 1));

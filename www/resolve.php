@@ -19,9 +19,13 @@ use yswery\DNS\Encoder;
 use yswery\DNS\Message;
 use yswery\DNS\ResourceRecord;
 
+$gDoh = new GoogleDoh();
+$gDoh->loadBlockList(__DIR__ . '/../blockListDefault.txt');
+$cDoh = new CloudFlareDoh();
+$cDoh->loadBlockList(__DIR__ . '/../blockListDefault.txt');
 $doh = new FallbackResolver();
-$doh->addResolver('google', new GoogleDoh());
-$doh->addResolver('cloudflare', new CloudFlareDoh());
+$doh->addResolver('google', $gDoh);
+$doh->addResolver('cloudflare', $cDoh);
 
 function domainToIp(string $domainName, int $type): ?string
 {

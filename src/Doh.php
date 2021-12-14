@@ -5,47 +5,7 @@ declare(strict_types=1);
 abstract class Doh implements IResolve
 {
     private int $maxDomainLength = 70;
-    // Maybe use some from https://firebog.net/
-    private array $blacklist = [
-        'ssl.google-analytics.com',
-        'www.google-analytics.com',
-        'google-analytics.com',
-        'googleads.g.doubleclick.net',
-        'static.doubleclick.net',
-        'stats.g.doubleclick.net',
-        'g.doubleclick.net',
-        'ad.doubleclick.net',
-        'fls.doubleclick.net',
-        'doubleclick.net',
-        'partner.googleadservices.com',
-        'googleadservices.com',
-        'adservice.google.cz',
-        'adservice.google.com',
-        'assets.pinterest.com',
-        'www.googletagservices.com',
-        'googletagservices.com',
-        'googletagmanager.com',
-        'www.googletagmanager.com',
-        'pagead.googlesyndication.com',
-        'pagead2.googlesyndication.com',
-        'googlesyndication.com',
-        'tpc.googlesyndication.com',
-        'syndication.twitter.com',
-        'safebrowsing.google.com',
-        'safebrowsing.googleapis.com',
-        'pinterest.com',
-        'pixel.adsafeprotected.com',
-        'dt.adsafeprotected.com',
-        'adsafeprotected.com',
-        'tracking-protection.cdn.mozilla.net',
-        'securepubads.g.doubleclick.net',
-        'pixel.quantserve.com',
-        'secure.quantserve.com',
-        'static.quantcast.com',
-        'www.quantcast.com',
-        'rules.quantcount.com',
-        'trackad.cz',
-    ];
+    private array $blockList = []; // Maybe use some from https://firebog.net/
     private string $hostname;
     private string $log;
     private array $cache = [];
@@ -95,9 +55,9 @@ abstract class Doh implements IResolve
         if (substr_count($domain, '.') < 2) {
             return $this->dd("Looks like bad domain", 3);
         }
-        foreach ($this->blacklist as $blacklist) {
-            if ($blacklist . '.' === $domain) {
-                return $this->dd("Blacklist hit", 2);
+        foreach ($this->blockList as $blockDomain) {
+            if ($blockDomain . '.' === $domain) {
+                return $this->dd("Blocklist hit", 2);
             }
         }
         if (!preg_match('~^[-.a-z0-9]+$~', $domain)) {
@@ -152,6 +112,15 @@ abstract class Doh implements IResolve
     public function getMaxDomainLength(): int
     {
         return $this->maxDomainLength;
+    }
+
+    public function loadBlockList(?string $blockListPath = null): void
+    {
+        if ($blockListPath) {
+            $this->blockList = explode("\n", file_get_contents($blockListPath));
+        } else {
+            $this->blockList = [];
+        }
     }
 
 }
