@@ -1,0 +1,9 @@
+[submodule "lib/http"]
+	path = lib/http
+	url = https://github.com/solcloud/http.git
+[submodule "lib/curl"]
+	path = lib/curl
+	url = https://github.com/solcloud/curl.git
+[submodule "lib/socket-raw"]
+	path = lib/socket-raw
+	url = https://github.com/clue/socket-raw.git
