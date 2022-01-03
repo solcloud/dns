@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bf3542b4d6bc6cc1e7f8756120c9d85e",
+    "content-hash": "6d42aea9ddbfca1b03bfd8f1bf8e2c24",
     "packages": [
         {
             "name": "clue/socket-raw",
@@ -77,16 +77,16 @@
         },
         {
             "name": "solcloud/curl",
-            "version": "v1.1.5",
+            "version": "v1.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/solcloud/curl.git",
-                "reference": "8aaebb749f782b3d5717fc58324857cc51f28c13"
+                "reference": "42d192c7bf97f3d7d32b13214d52cced0e4421e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/solcloud/curl/zipball/8aaebb749f782b3d5717fc58324857cc51f28c13",
-                "reference": "8aaebb749f782b3d5717fc58324857cc51f28c13",
+                "url": "https://api.github.com/repos/solcloud/curl/zipball/42d192c7bf97f3d7d32b13214d52cced0e4421e4",
+                "reference": "42d192c7bf97f3d7d32b13214d52cced0e4421e4",
                 "shasum": ""
             },
             "require": {
@@ -100,24 +100,33 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Simple wrapper around cURL",
+            "keywords": [
+                "curl",
+                "fetch",
+                "http"
+            ],
             "support": {
                 "issues": "https://github.com/solcloud/curl/issues",
-                "source": "https://github.com/solcloud/curl/tree/v1.1.5"
+                "source": "https://github.com/solcloud/curl/tree/v1.1.6"
             },
-            "time": "2021-09-27T10:26:45+00:00"
+            "time": "2021-10-13T13:20:31+00:00"
         },
         {
             "name": "solcloud/http",
-            "version": "v1.0.2",
+            "version": "v1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/solcloud/http.git",
-                "reference": "a03bf0677230ca1cd113e407f9df27d3321ad321"
+                "reference": "17eee16aaf4c954b3cc95642e996a54b58e58135"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/solcloud/http/zipball/a03bf0677230ca1cd113e407f9df27d3321ad321",
-                "reference": "a03bf0677230ca1cd113e407f9df27d3321ad321",
+                "url": "https://api.github.com/repos/solcloud/http/zipball/17eee16aaf4c954b3cc95642e996a54b58e58135",
+                "reference": "17eee16aaf4c954b3cc95642e996a54b58e58135",
                 "shasum": ""
             },
             "require": {
@@ -130,11 +139,18 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Basic low level HTTP Request, Response envelopes",
+            "keywords": [
+                "http"
+            ],
             "support": {
                 "issues": "https://github.com/solcloud/http/issues",
-                "source": "https://github.com/solcloud/http/tree/v1.0.2"
+                "source": "https://github.com/solcloud/http/tree/v1.0.5"
             },
-            "time": "2021-09-27T10:08:48+00:00"
+            "time": "2021-12-06T10:56:51+00:00"
         }
     ],
     "packages-dev": [],
@@ -147,5 +163,5 @@
         "php": "7.4.*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.1.0"
 }
