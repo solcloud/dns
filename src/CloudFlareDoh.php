@@ -8,6 +8,7 @@ use Solcloud\Http\Request;
 class CloudFlareDoh extends GoogleDoh
 {
     protected string $dohServerIp = '1.1.1.1';
+    protected string $dohDnsCommonName = 'cloudflare-dns.com';
     protected string $baseUrl = 'https://1.1.1.1/dns-query?';
 
     // https://developers.cloudflare.com/1.1.1.1/dns-over-https/json-format

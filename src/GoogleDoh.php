@@ -6,10 +6,12 @@ use Solcloud\Curl\CurlRequest;
 use Solcloud\Http\Contract\IRequestDownloader;
 use Solcloud\Http\Exception\HttpException;
 use Solcloud\Http\Request;
+use Solcloud\Http\Response;
 
 class GoogleDoh extends Doh
 {
     protected string $dohServerIp = '8.8.8.8';
+    protected string $dohDnsCommonName = 'dns.google';
     protected string $baseUrl = 'https://8.8.8.8/resolve?';
 
     protected Request $request;
@@ -22,6 +24,7 @@ class GoogleDoh extends Doh
         $this->request = $request ?? new Request();
         $this->request->setConnectionTimeoutSec(1);
         $this->request->setRequestTimeoutSec(2);
+        $this->request->setIncludeCertificatesInfo(true);
         $this->downloader = $downloader ?? new CurlRequest();
     }
 
@@ -42,6 +45,7 @@ class GoogleDoh extends Doh
 
         try {
             $response = $this->downloader->fetchResponse($this->request);
+            $this->checkResponse($response);
         } catch (HttpException $ex) {
             $this->dd($ex->getMessage());
             $this->resolverNotAvailable($ex->getMessage());
@@ -85,4 +89,16 @@ class GoogleDoh extends Doh
 
         return null;
     }
+
+    /**
+     * @throws HttpException
+     */
+    private function checkResponse(Response $response): void
+    {
+        $responseCommonName = $response->getCertificates()[0]['Subject'] ?? false;
+        if ("CN = {$this->dohDnsCommonName}" !== $responseCommonName) {
+            throw new HttpException("DNS common name mismatch");
+        }
+    }
+
 }
