@@ -46,20 +46,10 @@ class GoogleDoh extends Doh
         try {
             $response = $this->downloader->fetchResponse($this->request);
             $this->checkResponse($response);
+        } catch (InvalidArgumentException $ex){
+            return $this->dd($ex->getMessage());
         } catch (HttpException $ex) {
-            $this->dd($ex->getMessage());
             $this->resolverNotAvailable($ex->getMessage());
-        }
-
-        if ($response->getStatusCode() !== 200) {
-            $this->dd("Not 200 code response");
-            $this->resolverNotAvailable("Not 200 code response");
-        }
-        if (strlen($response->getBody()) > 8096) {
-            return $this->dd("Response body too long");
-        }
-        if ($response->getLastIp() !== $this->dohServerIp) {
-            return $this->dd("Response from different ip");
         }
 
         $json = json_decode($response->getBody(), true);
@@ -91,13 +81,26 @@ class GoogleDoh extends Doh
     }
 
     /**
+     * @throws InvalidArgumentException
      * @throws HttpException
      */
     private function checkResponse(Response $response): void
     {
+        if ($response->getStatusCode() !== 200) {
+            throw new HttpException("Not 200 code response");
+        }
+
+        if ($response->getLastIp() !== $this->dohServerIp) {
+            throw new InvalidArgumentException("Response from different ip");
+        }
+
         $responseCommonName = $response->getCertificates()[0]['Subject'] ?? false;
         if ("CN = {$this->dohDnsCommonName}" !== $responseCommonName) {
-            throw new HttpException("DNS common name mismatch");
+            throw new InvalidArgumentException("Certificate common name mismatch");
+        }
+
+        if (strlen($response->getBody()) > 8096) {
+            throw new InvalidArgumentException("Response body too long");
         }
     }
 
