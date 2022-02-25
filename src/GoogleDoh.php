@@ -95,7 +95,7 @@ class GoogleDoh extends Doh
         }
 
         $responseCommonName = $response->getCertificates()[0]['Subject'] ?? false;
-        if (strpos($responseCommonName, "CN = {$this->dohDnsCommonName}") === false) {
+        if (!is_string($responseCommonName) || strpos($responseCommonName, "CN = {$this->dohDnsCommonName}") === false) {
             throw new InvalidArgumentException("Certificate common name mismatch");
         }
 
