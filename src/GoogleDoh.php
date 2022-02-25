@@ -46,7 +46,7 @@ class GoogleDoh extends Doh
         try {
             $response = $this->downloader->fetchResponse($this->request);
             $this->checkResponse($response);
-        } catch (InvalidArgumentException $ex){
+        } catch (InvalidArgumentException $ex) {
             return $this->dd($ex->getMessage());
         } catch (HttpException $ex) {
             $this->resolverNotAvailable($ex->getMessage());
@@ -65,7 +65,7 @@ class GoogleDoh extends Doh
                 continue;
             }
 
-            $ip = (string) $answer['data'];
+            $ip = (string)$answer['data'];
             if (strlen($ip) > 15) {
                 return null;
             }
@@ -73,7 +73,7 @@ class GoogleDoh extends Doh
                 return null;
             }
 
-            $this->dd(get_class($this) . " GET OK");
+            $this->dd(get_class($this) . ": GET OK");
             return $ip;
         }
 
@@ -95,7 +95,7 @@ class GoogleDoh extends Doh
         }
 
         $responseCommonName = $response->getCertificates()[0]['Subject'] ?? false;
-        if (strpos($responseCommonName,"CN = {$this->dohDnsCommonName}") === false) {
+        if (strpos($responseCommonName, "CN = {$this->dohDnsCommonName}") === false) {
             throw new InvalidArgumentException("Certificate common name mismatch");
         }
 
