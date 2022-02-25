@@ -73,7 +73,7 @@ class GoogleDoh extends Doh
                 return null;
             }
 
-            $this->dd(__CLASS__ . " GET OK");
+            $this->dd(get_class($this) . " GET OK");
             return $ip;
         }
 
@@ -95,7 +95,7 @@ class GoogleDoh extends Doh
         }
 
         $responseCommonName = $response->getCertificates()[0]['Subject'] ?? false;
-        if ("CN = {$this->dohDnsCommonName}" !== $responseCommonName) {
+        if (strpos($responseCommonName,"CN = {$this->dohDnsCommonName}") === false) {
             throw new InvalidArgumentException("Certificate common name mismatch");
         }
 
