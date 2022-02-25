@@ -25,7 +25,7 @@ $cDoh = new CloudFlareDoh();
 $cDoh->loadBlockList(__DIR__ . '/../blockListDefault.txt');
 $doh = new FallbackResolver();
 $doh->addResolver('google', $gDoh);
-$doh->addResolver('cloudflare', $cDoh);
+#$doh->addResolver('cloudflare', $cDoh);
 
 function domainToIp(string $domainName, int $type): ?string
 {
